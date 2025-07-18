@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHIVAM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 1rem;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* or 'cover' if you want it to fill the circle */
+            border-radius: 50%;  /* Keep it circular */
+        }
+
+
+        .company-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Photo Gallery Styles */
+        .photo-gallery {
+            margin-top: 80px;
+            height: 60vh;
+            overflow: hidden;
+            position: relative;
+            background: #f8f9fa;
+        }
+
+        .photo-gallery-inner {
+            display: flex;
+            width: max-content;
+            animation: scroll-horizontal 40s linear infinite;
+            height: 100%;
+        }
+
+        .photo-item {
+            width: 400px;
+            height: 100%;
+            margin-right: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes scroll-horizontal {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Location Section Styles */
+        .location-section {
+            padding: 4rem 2rem;
+        }
+
+        .location-section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .location-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Location Header with Logo */
+        .location-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+        }
+
+        .location-logo {
+            width: 60px;
+            height: 60px;
+            margin-right: 1.5rem;
+        }
+
+        .location-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* or 'cover' if you want it to fill the circle */
+            border-radius: 50%;
+        }
+
+
+        .location-title {
+            font-size: 3rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Video Section */
+        .video-section {
+            width: 100%;
+            padding: 2rem 0;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+        }
+
+        .video-container {
+            width: 90%;
+            max-width: 800px;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .location-video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+
+        /* Description Section */
+        .description-section {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 0 2rem;
+        }
+
+        .location-description {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            min-width: 250px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .contact-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .contact-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .contact-info {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+
+            .company-name {
+                font-size: 1.2rem;
+            }
+
+            .location-title {
+                font-size: 2rem;
+            }
+
+            .location-logo {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                margin-right: 1rem;
+            }
+
+            .photo-item {
+                width: 300px;
+            }
+
+            .location-video {
+                height: 300px;
+            }
+
+            .contact-section {
+                gap: 1.5rem;
+            }
+
+            .contact-card {
+                min-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="Your Company Logo" style="height: 50px;">
+        </div>
+
+        <div class="company-name">  SHIVAM GROUP  </div>
+    </header>
+
+    <!-- Photo Gallery -->
+<section class="photo-gallery">
+    <div class="photo-gallery-inner">
+        <div class="photo-item">
+            <img src="assets/images/gallery2.jpg" alt="Gallery Image 2">
+        </div>
+        <div class="photo-item">
+            <img src="assets/images/gallery3.jpg" alt="Gallery Image 3">
+        </div>
+        <div class="photo-item">
+            <img src="assets/images/gallery4.jpg" alt="Gallery Image 4">
+        </div>
+        <div class="photo-item">
+            <img src="assets/images/gallery5.jpg" alt="Gallery Image 5">
+        </div>
+        <div class="photo-item">
+            <img src="assets/images/gallery6.jpg" alt="Gallery Image 6">
+        </div>
+        <div class="photo-item">
+            <img src="assets/images/gallery7.jpg" alt="Gallery Image 7">
+        </div>
+        <div class="photo-item">
+            <img src="assets/images/gallery8.jpg" alt="Gallery Image 8">
+        </div>
+        <div class="photo-item">
+            <img src="assets/images/gallery9.jpg" alt="Gallery Image 9">
+        </div>
+        <!-- Duplicate set for seamless loop -->
+        <div class="photo-item">
+            <img src="assets/images/gallery2.jpg" alt="Gallery Image 2">
+        </div>
+        <div class="photo-item">
+            <img src="assets/images/gallery3.jpg" alt="Gallery Image 3">
+        </div>
+        <div class="photo-item">
+            <img src="assets/images/gallery4.jpg" alt="Gallery Image 4">
+        </div>
+        <div class="photo-item">
+            <img src="assets/images/gallery5.jpg" alt="Gallery Image 5">
+        </div>
+        <div class="photo-item">
+            <img src="assets/images/gallery6.jpg" alt="Gallery Image 6">
+        </div>
+    </div>
+</section>
+
+
+    <!-- Downtown Location -->
+    <section class="location-section">
+        <div class="location-content">
+            <!-- Location Header with Logo -->
+            <div class="location-header">
+                <div class="location-logo">
+                    <img src="assets/images/ShivamTraders-icon.png" alt="Location Logo">
+                </div>
+
+                <h2 class="location-title">SHIVAM TRADERS</h2>
+            </div>
+
+            <!-- Video Section -->
+            <div class="video-section">
+                <div class="video-container">
+                    <video class="location-video" autoplay muted loop playsinline>
+                        <source src="assets/videos/ShivamTraders_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
+
+            <!-- Description Section -->
+            <div class="description-section">
+                <p class="location-description">
+                    Welcome to SHIVAM TRADERS,<br>
+                    we are a trusted manufacturer of high-quality cement poles and boundary products, 
+                    including fencing poles, Y poles, and C poles. Built to last and crafted with care, 
+                    our products are strong, reliable, and ideal for all your boundary and construction needs. 
+                    With years of experience and a commitment to customer satisfaction, 
+                    we ensure that every product meets the highest standards.
+                </p>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="contact-section">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-title">Phone</div>
+                    <div class="contact-info"><p>Narendra Ravani</p><a href="tel:+919825033819">+91 9825033819</a><br><p>Dharmesh Ravani</p><a href="tel:+919978444003">+91 9978444003</a></div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-title">Address</div>
+                    <div class="contact-info"><a href="https://maps.app.goo.gl/Dz3w3aveJrUWXSDYA?g_st=ipc" target="_blank" rel="noopener"><br>SHIVAM TRADERS</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suburban Branch -->
+    <section class="location-section">
+        <div class="location-content">
+            <!-- Location Header with Logo -->
+            <div class="location-header">
+                <div class="location-logo">
+                    <img src="assets/images/ShivamIndustries-icon.png" alt="Location Logo">
+                </div>
+                <h2 class="location-title">SHIVAM INDUSTRIES</h2>
+            </div>
+
+            <!-- Video Section -->
+            <div class="video-section">
+                <div class="video-container">
+                    <video class="location-video" autoplay muted loop playsinline>
+                        <source src="assets/videos/ShivamIndustries_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
+            <!-- Description Section -->
+            <div class="description-section">
+                <p class="location-description">
+                    Welcome to SHIVAM INDUSTRIES,<br>
+                    we are a trusted manufacturer of high-quality cement poles and boundary products, 
+                    including fencing poles, Y poles, and C poles. Built to last and crafted with care, 
+                    our products are strong, reliable, and ideal for all your boundary and construction needs. 
+                    With years of experience and a commitment to customer satisfaction, 
+                    we ensure that every product meets the highest standards.
+                </p>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="contact-section">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-title">Phone</div>
+                    <div class="contact-info"><p>Narendra Ravani</p><a href="tel:+919825033819">+91 9825033819</a><br><p>Dharmesh Ravani</p><a href="tel:+919978444003">+91 9978444003</a></div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-title">Address</div>
+                    <div class="contact-info"><a href="https://maps.app.goo.gl/zoe5igGSDubaupRFA?g_st=ipc" target="_blank" rel="noopener"><br>SHIVAM INDUSTRIES</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- Suburban Branch -->
+    <section class="location-section">
+        <div class="location-content">
+            <!-- Location Header with Logo -->
+            <div class="location-header">
+                <div class="location-logo">
+                    <img src="assets/images/ShivamIndustries-icon.png" alt="Location Logo">
+                </div>
+                <h2 class="location-title">SHIVAM TIMBER</h2>
+            </div>
+
+            <!-- Video Section -->
+            <div class="video-section">
+                <div class="video-container">
+                    <video class="location-video" autoplay muted loop playsinline>
+                        <source src="assets/videos/ShivamTimber_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
+            <!-- Description Section -->
+            <div class="description-section">
+                <p class="location-description">
+                    Welcome to SHIVAM TIMBER,<br>
+                    We are a trusted wooden mill known for delivering high-quality timber products in both large quantities 
+                    and fine craftsmanship. Whether you need planks, beams, or custom-cut wood, 
+                    we provide strong, durable materials that meet the highest standards. 
+                    With a perfect balance of quantity and quality
+                </p>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="contact-section">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-title">Phone</div>
+                    <div class="contact-info"><p>Narendra Ravani</p><a href="tel:+919825033819">+91 9825033819</a><br><p>Dharmesh Ravani</p><a href="tel:+919978444003">+91 9978444003</a></div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-title">Address</div>
+                    <div class="contact-info"><a href="https://maps.app.goo.gl/povnYsamXpSGp9Cg9?g_st=ipc" target="_blank" rel="noopener"><br>SHIVAM TIMBER</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Video scroll animation
+    </script>
+</body>
+</html>
